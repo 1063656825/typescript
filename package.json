@@ -1,0 +1,15 @@
+{
+    "requires": true,
+    "lockfileVersion": 1,
+    "scripts": {
+        "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts"
+    },
+    "dependencies": {
+        "@types/node": {
+            "version": "14.14.32",
+            "resolved": "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.32.tgz?cache=0&sync_timestamp=1615136913533&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.32.tgz",
+            "integrity": "sha1-kMXEqNcru/5TAz8SI0E0MkkYNEg=",
+            "dev": true
+        }
+    }
+}
