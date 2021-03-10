@@ -1,117 +1,27 @@
-
-// type Deck = NormalCard[]
-// type Color = "♥" | "♠" | "♣" | "♦"
-// type NormalCard = {
-//     color: Color
-//     mark:number
-// }
-
-// function createDeck():Deck{
-//     let deck:Deck = [];
-//     for (let i = 1; i <= 13; i++) {
-//         deck.push({
-//             color:"♠",
-//             mark:i
-//         })
-//         deck.push({
-//             color: "♣",
-//             mark: i
-//         })
-//         deck.push({
-//             color: "♥",
-//             mark: i
-//         })
-//         deck.push({
-//             color: "♦",
-//             mark: i
-//         })
-        
-//     }
-//     return deck
-// }
-
-// function printDeck(deck:Deck){
-//     for (let item of deck) {
-//         let str = item.color;
-//         if(item.mark == 1){
-//             str += 'A'
-//         }else if(item.mark <=10){
-//             str += item.mark
-//         }else if(item.mark == 11){
-//             str+="J"
-//         } else if (item.mark == 12) {
-//             str += "Q"
-//         } else if (item.mark == 13) {
-//             str += "K"
-//         }
-//         // console.log("这是一张"+str);
-//     }
-// }
-// let result = createDeck();
-// printDeck(result)
-// function findCardsByColor(color:Color){
-    
-// }
-
-
-// 枚举的方式
-
-type Deck = NormalCard[]
-type NormalCard = {
-    color: Color
-    mark: Mark
+enum Permission{
+    Read = 1,    //0001
+    Write = 2,   //0010
+    Create = 4,  //0100
+    Delete = 8,  //1000
 }
 
-enum Color{
-    heart = "♥",
-    spade = "♠",
-    club = "♣",
-    diamond = "♦"
+// 如何组合权限
+// 这里使用的是 或 运算
+let p = Permission.Read | Permission.Write;
+p = p | Permission.Delete;
+
+// 2. 如何判断是否拥有某个权限
+// 这里使用的是 且 运算
+function hasPermission(target:Permission,per:Permission){
+    return (target & per) === per;
 }
 
-enum Mark{
-    A = "A",
-    two = "2",
-    three = "3",
-    four = "4",
-    five = "5",
-    six = "6",
-    seven = "7",
-    eight = "8",
-    nine = "9",
-    ten = "10",
-    jack = "J",
-    queen = "Q",
-    King = "K"
-}
+let result = hasPermission(p, Permission.Delete)
+console.log(result);
 
-function creatDeck():Deck{
-    let deck:Deck = [];
-    let mark = Object.values(Mark)
-    let color = Object.values(Color)
-    for (const m of mark) {
-        for (const c of color) {
-            deck.push({
-                color:c,
-                mark:m
-            })
-        }
-    }
-    return deck
-}
+// 3. 删除某个权限
+// 这里使用的是 异或 运算   相同取 0 不同取 1
+p = p ^ Permission.Delete;
 
-function printDeck(decK:Deck){
-    let result:string = "\n";
-    decK.forEach((item,index)=>{
-        let str:string;
-        str = item.mark + item.color + '\t';
-        if((index + 1) % 6 == 0){
-            str += '\n'
-        }
-        result += str;
-    })
-    console.log(result);
-    
-}
-let result = creatDeck()
-printDeck(result)
+result = hasPermission(p, Permission.Delete)
+console.log(result);
