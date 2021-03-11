@@ -5,6 +5,10 @@
         "lib": ["es2016"],//这个是配置ts文件运行的环境
         "outDir": "./dist",
         "strictNullChecks": true,//严格的空类型检查
+        "noImplicitUseStrict": true,//编译后不带严格模式
+        "esModuleInterop": true,//在es模式下也可以使用费es
+        "noEmitOnError": true,//在有报错的情况下不进行编译
+        "moduleResolution": "node",//使用node方式进行模块解析
     },
     "include": ["./src"],//配置编译路径
     // "files": ["./src/index.ts"],//这个是配置编译的指定文件，以及其引入的ts
