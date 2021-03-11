@@ -1,97 +1,17 @@
-// // 接口约束对象
-// interface User{
-//     name:string,
-//     age:number,
-//     // sayHello:void,
-//     sayHello:()=>void
+interface Duck {
+    sound : "嘎嘎嘎",
+    swin():void
+}
 
-// }
-
-
-
-// // type User = {
-// //     name:string,
-// //     age:number
-// // }
-
-// let u:User = {
-//     name:"kaka",
-//     age:12,
-//     sayHello(){
-//         console.log("hello");
+let person = {
+    name : "鸭人",
+    age : 1,
+    sound: "嘎嘎嘎" as "嘎嘎嘎",
+    swin(){
+        console.log(this.name + "游泳" + this.sound);
         
-//     }
-// }
-
-// type Condition = (n) => boolean;
-interface Condition {
-    (n:number) : boolean
+    }
 }
 
-function sum(n:number[],callback:Condition){
-    let s = 0;
-    n.forEach(item=>{
-        if(callback(item)){
-            s += item
-        }
-    })
-    return s;
-}
-
-const result = sum([3,4,5,7,11],n => n%2 !==0);
-console.log(result);
-
-
-// 接口继承
-// interface A {
-//     T1 : number
-// }
-
-// interface B {
-//     T2 : string
-// }
-
-// interface C extends A ,B {
-//     T3 : boolean
-// }
-
-// let t:C = {
-//     T1 : 12,
-//     T3 : true,
-//     T2 : "asd"
-// }
-
-// type A= {
-//     T1: number
-// }
-
-// type B= {
-//     T2: string
-// }
-
-// type C=  {
-//     T3: boolean
-// } & A & B
-
-// let t: C = {
-//     T1: 12,
-//     T3: true,
-//     T2: "asd"
-// }
-
-interface User {
-    readonly id:string,
-    name: string,
-    age:number,
-    readonly arr: readonly string[]
-}
-
-let u:User = {
-    id:"111",
-    name:"aaa",
-    age:12,
-    arr: ["a","b","c"]
-}
- 
-// u.id = "1122"
-
+let yy:Duck = person;
+// 这样就能说名 person满足Duck .
