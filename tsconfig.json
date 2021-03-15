@@ -5,6 +5,7 @@
         "lib": ["es2016"],//这个是配置ts文件运行的环境
         "outDir": "./dist",
         "strictNullChecks": true,//严格的空类型检查
+        "strictPropertyInitialization": true
     },
     "include": ["./src"],//配置编译路径
     // "files": ["./src/index.ts"],//这个是配置编译的指定文件，以及其引入的ts

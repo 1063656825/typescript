@@ -1,6 +1,6 @@
 import { Color, Mark } from "./enums"
 
-export type Deck = (NormalCard | Joker)[]
+// export type Deck = Card[]
 
 export interface NormalCard extends Card{
     color: Color
