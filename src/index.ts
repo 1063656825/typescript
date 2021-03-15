@@ -1,26 +1,16 @@
-// import { creatDeck, printDeck } from "./funcs"
+function shuffle<T>(arr: T[]): T[] {
+    arr.forEach((item, index) => {
+        let tempIndex = random(0, arr.length)
+        let temp = arr[tempIndex];
+        arr[tempIndex] = item;
+        arr[index] = temp;
+    })
+    return arr
+}
 
-import { Deck } from "./deck";
+function random(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min) + min)
+}
 
-// let result = creatDeck()
-// printDeck(result)
-
-let deck = new Deck;
-console.log("====洗牌之后====");
-
-deck.printDeck();
-const result = deck.publish()
-console.log("====发牌之后====");
-// 第一个人的扑克牌
-console.log("====第一个人的牌====");
-result.player1.printDeck()
-
-console.log("====第二个人的牌====");
-result.player2.printDeck()
-
-console.log("====第三个人的牌====");
-result.player3.printDeck()
-
-console.log("====剩下的牌====");
-result.left.printDeck()
-
+let arr = ["1","2","3","4"];
+console.log(shuffle<string>(arr));
